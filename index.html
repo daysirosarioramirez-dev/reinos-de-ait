@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reinos de Ait</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="./manifest.json">
+</head>
+<body>
+  <main class="game-container">
+    <section id="mainMenu" class="main-menu">
+    <h1>🏰 REINOS DE AIT</h1>
+    <p>Una aventura llena de magia y desafíos</p>
+
+    <div class="menu-buttons">
+        <button type="button" onclick="startGame()">▶ Nueva partida</button>
+      <div  id="instructions" hidden>
+      </div>
+    </div>
+
+    <p class="menu-footer">JUEGO EDUCATIVO · REINOS DE AIT</p>
+</section>
+    <div id="gameScreen" hidden>
+      
+    <header class="top-bar">
+      <h1>Reinos de Ait</h1>
+      <button onclick="newGame()">Nueva partida</button>
+     
+</button>
+    </header>
+
+    <div class="game-layout">
+
+      <section class="game-main">
+        <canvas id="game" width="640" height="384" tabindex="0"></canvas>
+
+        <p id="message">Explora el bosque y encuentra el cristal mágico.</p>
+      </section>
+
+      <aside class="game-sidebar">
+
+        <div class="status">
+          <span>❤️ Vida: <b id="life">100</b></span>
+          <span>💎 Cristales: <b id="crystals">0</b></span>
+          <span>⭐ Nivel: <b id="level">1</b></span>
+          <span>✨ EXP: <b id="experience">0</b></span>
+        </div>
+
+        <div class="controls">
+          <h2>🎮 Controles</h2>
+          <p><b>Movimiento:</b> flechas o W, A, S, D</p>
+          <p><b>Recoger:</b> acércate al cristal y pulsa E</p>
+          <p><b>atacar:</b> acercate al enemigo y pulsa F </p>
+          <p><b>inventario</b> pulsa I </p>
+        </div>
+
+        <div id="battleMenu" hidden>
+          <h2>Combate</h2>
+          <p id="battleStats"></p>
+          <div class="boss-health">
+            <div id="bossHealthBar"></div>
+          </div>
+          <p id="battleMessage"></p>
+          <div class="battle-buttons">
+            <button id="attackBtn">Atacar</button>
+            <button id="magicBtn">Magia</button>
+            <button id="darkBtn">Golpe oscuro</button>
+            <button id="runBtn">Huir</button>
+            <button id="potionBtn">🧪 Poción(3)</button>
+          </div>
+        </div>
+
+        <div id="inventoryMenu" hidden>
+          <h2>🎒 Inventario</h2>
+          <p>🧪 Pociones: <span id="inventoryPotions">0</span></p>
+          <p>💎 Cristales: <span id="inventoryCrystals">0</span></p>
+          <h3>Objetos especiales</h3>
+          <ul id="inventoryItems"></ul>
+          <button id="closeInventory">Cerrar</button>
+        </div>
+
+        <div id="mathChallenge" hidden>
+          <h2>🧩 Desafío matemático</h2>
+          <p id="mathQuestion">¿Cuánto es 12 × 8?</p>
+          <div id="mathAnswers">
+            <button class="math-option" data-answer="86">86</button>
+            <button class="math-option" data-answer="96">96</button>
+            <button class="math-option" data-answer="108">108</button>
+            <button class="math-option" data-answer="92">92</button>
+          </div>
+          <p id="mathMessage"></p>
+          <button id="checkMath">Comprobar</button>
+        </div>
+
+        <div id="victoryScreen" hidden>
+          <h1>🏆 ¡HÉROE DE LOS CINCO REINOS!</h1>
+          <h2>¡Has salvado los reinos!</h2>
+          <p>El poder oscuro ha desaparecido y la paz ha regresado.</p>
+          <h2>✨ FIN DE LA AVENTURA ✨</h2>
+          <p>Gracias por jugar Reinos de Ait.</p>
+          <button onclick="newGame()">Jugar de nuevo</button>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+  </main>
+
+  <script src="game.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+            .catch(error => console.log("Error:", error));
+    });
+}
+</script>
+</body>
+</html>

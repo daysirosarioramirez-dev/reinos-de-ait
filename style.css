@@ -1,0 +1,365 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 12px;
+  background: #101827;
+  color: #f4edda;
+  font-family: Arial, sans-serif;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px;
+  background: #1c2938;
+  border: 3px solid #bd9b54;
+  border-radius: 12px;
+  box-shadow: 0 0 30px #0008;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  margin: 0;
+  color: #f1d38b;
+  letter-spacing: 2px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.top-bar button {
+  padding: 10px 16px;
+  background: #bd9b54;
+  color: #101827;
+  border: none;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 760px) minmax(220px, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.game-main {
+  min-width: 0;
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 3px solid #bd9b54;
+  image-rendering: pixelated;
+}
+
+#message {
+  min-height: 24px;
+  margin: 12px 0 0;
+  padding: 10px;
+  background: #101827;
+  border-radius: 7px;
+  color: #f1d38b;
+  font-weight: bold;
+}
+
+.game-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.status {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 12px;
+  background: #101827;
+  border: 1px solid #bd9b54;
+  border-radius: 8px;
+}
+
+.controls,
+#battleMenu,
+#inventoryMenu,
+#mathChallenge {
+  padding: 14px;
+  background: #101827;
+  border: 1px solid #bd9b54;
+  border-radius: 10px;
+}
+
+.controls {
+  font-size: 14px;
+  color: #c5d1dc;
+  line-height: 1.5;
+}
+
+.controls h2,
+#battleMenu h2,
+#inventoryMenu h2,
+#mathChallenge h2 {
+  margin-top: 0;
+  color: #f1d38b;
+  font-size: 20px;
+}
+
+.controls p {
+  margin: 6px 0;
+}
+
+#battleMenu[hidden],
+#inventoryMenu[hidden],
+#mathChallenge[hidden],
+#victoryScreen[hidden] {
+  display: none;
+}
+
+#battleStats {
+  font-weight: bold;
+  line-height: 1.8;
+}
+
+#battleMessage {
+  min-height: 24px;
+  color: #f1d38b;
+}
+
+.battle-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.battle-buttons button,
+#lightningBtn {
+  padding: 10px 12px;
+  background: #344d69;
+  color: white;
+  border: 1px solid #bd9b54;
+  border-radius: 7px;
+  font-size: 14px;
+}
+
+.battle-buttons button:hover,
+#lightningBtn:hover {
+  background: #496b8e;
+}
+
+.battle-buttons button:disabled,
+#lightningBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.boss-health {
+  width: 100%;
+  height: 16px;
+  background: #333;
+  border: 2px solid #222;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+#bossHealthBar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #8b0000, #ff3030);
+  transition: width 0.3s ease;
+}
+
+#victoryScreen {
+  background: linear-gradient(135deg, #211536, #49305f);
+  color: #ffe9a8;
+  padding: 20px;
+  border: 3px solid #d6ad50;
+  border-radius: 14px;
+  text-align: center;
+}
+
+#victoryScreen h1 {
+  color: #ffd76a;
+  font-size: 22px;
+}
+
+#victoryScreen p {
+  color: white;
+  font-size: 15px;
+}
+
+#victoryScreen button {
+  background: #d6ad50;
+  color: #211536;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 850px) {
+  .game-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .game-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .status,
+  .controls,
+  #battleMenu,
+  #inventoryMenu,
+  #mathChallenge,
+  #victoryScreen {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  body {
+    padding: 6px;
+  }
+
+  .game-container {
+    padding: 10px;
+  }
+
+  .top-bar {
+    flex-direction: column;
+  }
+
+  .game-sidebar {
+    display: flex;
+  }
+
+  .status {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.game-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.status {
+  gap: 6px;
+  padding: 8px;
+  font-size: 13px;
+}
+
+.controls,
+#battleMenu,
+#inventoryMenu,
+#mathChallenge {
+  padding: 9px;
+  font-size: 12px;
+}
+
+.controls h2,
+#battleMenu h2,
+#inventoryMenu h2,
+#mathChallenge h2 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.controls p {
+  margin: 4px 0;
+}
+
+.battle-buttons {
+  gap: 5px;
+}
+
+.battle-buttons button {
+  padding: 8px 9px;
+  font-size: 12px;
+}
+ 
+/* MENÚ PRINCIPAL */
+.main-menu {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 15px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #17152b, #39265c, #17152b);
+    color: white;
+}
+
+.main-menu h1 {
+    font-size: 42px;
+    color: #e6caff;
+    text-shadow: 0 0 15px #a66cff;
+    margin-bottom: 10px;
+}
+
+.main-menu p {
+    color: #ddd0f5;
+    font-size: 17px;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 230px;
+    margin-top: 30px;
+}
+
+.menu-buttons button {
+    padding: 14px;
+    border: 2px solid #b18ae8;
+    border-radius: 12px;
+    background: #503779;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.menu-buttons button:hover {
+    background: #7952ad;
+    transform: scale(1.04);
+}
+
+.main-menu .menu-footer {
+    margin-top: 45px;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+/* Ocultar correctamente las pantallas */
+#mainMenu[hidden] {
+    display: none !important;
+}
+
+#gameScreen[hidden] {
+    display: none !important;
+}
