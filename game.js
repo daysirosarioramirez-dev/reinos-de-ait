@@ -2865,6 +2865,55 @@ window.addEventListener("keydown", function(e) {
         openInventory();
     }
 });
+// CONTROLES TACTILES DE REINOS DE AIT
+
+function mobileMove(x, y) {
+    if (state.battle) return;
+
+    if (
+        ($("mathChallenge") && !$("mathChallenge").hidden) ||
+        ($("inventoryMenu") && !$("inventoryMenu").hidden)
+    ) {
+        return;
+    }
+
+    move(x, y);
+}
+
+function mobileAction(action) {
+    if (
+        ($("mathChallenge") && !$("mathChallenge").hidden) ||
+        ($("inventoryMenu") && !$("inventoryMenu").hidden)
+    ) {
+        return;
+    }
+
+    if (state.battle) return;
+
+    if (action === "interact") interact();
+    if (action === "battle") startBattle();
+    if (action === "inventory") openInventory();
+}
+
+function connectMobileButton(id, callback) {
+    const button = document.getElementById(id);
+
+    if (!button) return;
+
+    button.addEventListener("pointerdown", function(e) {
+        e.preventDefault();
+        callback();
+    });
+}
+
+connectMobileButton("btnUp", () => mobileMove(0, -1));
+connectMobileButton("btnDown", () => mobileMove(0, 1));
+connectMobileButton("btnLeft", () => mobileMove(-1, 0));
+connectMobileButton("btnRight", () => mobileMove(1, 0));
+
+connectMobileButton("btnInteract", () => mobileAction("interact"));
+connectMobileButton("btnBattle", () => mobileAction("battle"));
+connectMobileButton("btnInventory", () => mobileAction("inventory"));
 
 // ================================================
 // INICIAR

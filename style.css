@@ -363,3 +363,53 @@ canvas {
 #gameScreen[hidden] {
     display: none !important;
 }
+
+/* CONTROLES TÁCTILES DE REINOS DE AIT */
+
+#mobileControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    padding: 12px;
+    margin: 10px auto;
+    max-width: 500px;
+}
+
+.directionControls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.directionControls button,
+.actionControls button {
+    width: 55px;
+    height: 48px;
+    border: 2px solid #d6b45a;
+    border-radius: 12px;
+    background: #263b60;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    touch-action: none;
+    user-select: none;
+}
+
+.directionControls button:active,
+.actionControls button:active {
+    background: #8b5cf6;
+    transform: scale(0.94);
+}
+
+.actionControls {
+    display: flex;
+    gap: 8px;
+}
+
+@media (min-width: 800px) {
+    #mobileControls {
+        max-width: 350px;
+    }
+}
