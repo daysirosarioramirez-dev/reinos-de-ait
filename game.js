@@ -2868,6 +2868,8 @@ window.addEventListener("keydown", function(e) {
 // CONTROLES TACTILES DE REINOS DE AIT
 
 function mobileMove(x, y) {
+    console.log("movimiento tactil.",x,y);
+    
     if (state.battle) return;
 
     if (
